@@ -16,6 +16,8 @@ header {
   align-items: center;
   width: 100%;
   max-width: 340px;
+  position: absolute;
+  top: 25px;
 }
 
 h1 {
@@ -42,6 +44,7 @@ img:hover {
 
   .header-wrapper {
     max-width: 690px;
+    top: 40px;
   }
 }
 

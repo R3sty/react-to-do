@@ -4,10 +4,12 @@ import MainSection from "./components/MainSection";
 
 function App() {
   return (
-    <main>
+    <>
       <Header />
-      <MainSection />
-    </main>
+      <main>
+        <MainSection />
+      </main>
+    </>
   );
 }
 
