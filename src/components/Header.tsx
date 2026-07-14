@@ -6,7 +6,7 @@ export default function Header() {
     <header className="headerContainer">
       <div className="header-wrapper">
         <h1>T O D O</h1>
-        <button aria-label="Theme toggle">
+        <button className="theme-btn" aria-label="Theme toggle">
           <img src={logo} />
         </button>
       </div>
