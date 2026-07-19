@@ -1,0 +1,19 @@
+.main-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 100%;
+  position: relative;
+  top: -120px;
+}
+
+.drag-text {
+  margin-top: 60px;
+}
+
+@media (min-width: 768px) {
+  .main-container {
+    top: -110px;
+  }
+}
