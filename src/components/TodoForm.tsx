@@ -4,10 +4,11 @@ import { useState } from "react";
 export default function TodoForm({ onSubmit }) {
   const [tasks, setTasks] = useState("");
 
-  const handleSubmit = (e: React.SubmitEvent) => {
-    //SubmitEvent - Used by TypeScript for autocomplete and type checking
+  const handleSubmit = (e) => {
     e.preventDefault();
+    if (!tasks.trim()) return;
     onSubmit(tasks);
+    setTasks("");
   };
 
   return (
