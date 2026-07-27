@@ -13,24 +13,6 @@ export default function TodoList() {
           <img src={cross} />
         </button>
       </li>
-      <li className="todo-item">
-        <button className="complete-btn">
-          <span className="check-icon"></span>
-          <span>Sample Task</span>
-        </button>
-        <button className="delete-btn">
-          <img src={cross} />
-        </button>
-      </li>
-      <li className="todo-item">
-        <button className="complete-btn">
-          <span className="check-icon"></span>
-          <span>Sample Task</span>
-        </button>
-        <button className="delete-btn">
-          <img src={cross} />
-        </button>
-      </li>
     </ul>
   );
 }
