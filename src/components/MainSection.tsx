@@ -15,7 +15,7 @@ export default function MainSection() {
   return (
     <div className="main-container">
       <TodoForm onSubmit={addTodo} />
-      <TodoList />
+      <TodoList todoItems={todos} />
       <TodoFilter />
       <p className="drag-text">Drag and drop to reorder list</p>
     </div>
