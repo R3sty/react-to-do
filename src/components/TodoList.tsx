@@ -5,7 +5,7 @@ export default function TodoList({ todoItems }) {
   return (
     <ul className="todo-list">
       {todoItems.map((task) => (
-        <li className="todo-item">
+        <li className="todo-item" key={task}>
           <button className="complete-btn">
             <span className="check-icon"></span>
             <span>{task}</span>
