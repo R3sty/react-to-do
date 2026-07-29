@@ -5,10 +5,10 @@ export default function TodoList({ todoItems }) {
   return (
     <ul className="todo-list">
       {todoItems.map((task) => (
-        <li className="todo-item" key={task}>
+        <li className="todo-item" key={task.id}>
           <button className="complete-btn">
             <span className="check-icon"></span>
-            <span>{task}</span>
+            <span>{task.text}</span>
           </button>
           <button className="delete-btn">
             <img src={cross} />
