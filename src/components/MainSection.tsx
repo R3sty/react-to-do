@@ -17,6 +17,18 @@ export default function MainSection() {
     console.log("adding tasks");
   }
 
+  function toggleComplete(id) {
+    setTodos((prevTodos) => {
+      return prevTodos.map((task) => {
+        if (task.id === id) {
+          return { ...task, completed: !task.completed }; // !task.completed toggles a boolean from false to true and true to false. it always reverses the current value.
+        } else {
+          return task;
+        }
+      });
+    });
+  }
+
   useEffect(() => {
     console.log(todos);
   }, [todos]);
@@ -24,7 +36,7 @@ export default function MainSection() {
   return (
     <div className="main-container">
       <TodoForm onSubmit={addTodo} />
-      <TodoList todoItems={todos} />
+      <TodoList todoItems={todos} onButtonClick={toggleComplete} />
       <TodoFilter />
       <p className="drag-text">Drag and drop to reorder list</p>
     </div>
