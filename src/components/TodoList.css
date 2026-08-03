@@ -27,7 +27,7 @@
   gap: 20px;
 }
 
-.check-icon {
+.check-circle {
   display: flex;
   height: 20px;
   width: 20px;
@@ -35,10 +35,31 @@
   border: 1px solid rgba(0, 0, 0, 0.5);
 }
 
+.check-icon {
+  display: flex;
+  height: 20px;
+  width: 20px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #5cb3ff 0%, #a25bfe 100%);
+  pointer-events: none;
+}
+
+.check {
+  height: 15px;
+  width: 15px;
+}
+
 .delete-btn {
   border: none;
   background-color: #fff;
   cursor: pointer;
+}
+
+.completed {
+  text-decoration: line-through;
+  opacity: 0.5;
 }
 
 @media (min-width: 768px) {
