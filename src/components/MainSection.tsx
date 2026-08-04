@@ -29,6 +29,14 @@ export default function MainSection() {
     });
   }
 
+  function deleteTodo(id) {
+    setTodos((prevTodos) => {
+      return prevTodos.filter((task) => {
+        return task.id !== id;
+      });
+    });
+  }
+
   useEffect(() => {
     console.log(todos);
   }, [todos]);
@@ -36,7 +44,11 @@ export default function MainSection() {
   return (
     <div className="main-container">
       <TodoForm onSubmit={addTodo} />
-      <TodoList todoItems={todos} onButtonClick={toggleComplete} />
+      <TodoList
+        todoItems={todos}
+        onButtonClick={toggleComplete}
+        onDeleteButton={deleteTodo}
+      />
       <TodoFilter />
       <p className="drag-text">Drag and drop to reorder list</p>
     </div>

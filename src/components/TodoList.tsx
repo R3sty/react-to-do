@@ -2,7 +2,7 @@ import "./TodoList.css";
 import cross from "../assets/images/icon-cross.svg";
 import check from "../assets/images/icon-check.svg";
 
-export default function TodoList({ todoItems, onButtonClick }) {
+export default function TodoList({ todoItems, onButtonClick, onDeleteButton }) {
   return (
     <ul className="todo-list">
       {todoItems.map((task) => (
@@ -22,8 +22,11 @@ export default function TodoList({ todoItems, onButtonClick }) {
               {task.text}
             </span>
           </button>
-          <button className="delete-btn">
-            <img src={cross} />
+          <button
+            className="delete-btn"
+            onClick={() => onDeleteButton(task.id)}
+          >
+            <img src={cross} alt="Delete todo" />
           </button>
         </li>
       ))}
