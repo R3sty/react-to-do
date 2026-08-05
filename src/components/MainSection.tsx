@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 
 export default function MainSection() {
   const [todos, setTodos] = useState([]);
+  const [selectedFilter, setSelectedFilter] = useState("all");
 
   function addTodo(taskText) {
     const newTask = {
@@ -37,6 +38,8 @@ export default function MainSection() {
     });
   }
 
+  function filterTodo(filter) {}
+
   useEffect(() => {
     console.log(todos);
   }, [todos]);
@@ -49,7 +52,7 @@ export default function MainSection() {
         onButtonClick={toggleComplete}
         onDeleteButton={deleteTodo}
       />
-      <TodoFilter />
+      <TodoFilter onFilterSelect={filterTodo} />
       <p className="drag-text">Drag and drop to reorder list</p>
     </div>
   );
