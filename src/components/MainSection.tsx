@@ -38,7 +38,19 @@ export default function MainSection() {
     });
   }
 
-  function filterTodo(filter) {}
+  function filterTodo(filter) {
+    setSelectedFilter(filter);
+  }
+
+  let visibleTodos;
+
+  if (selectedFilter === "all") {
+    visibleTodos = todos;
+  } else if (selectedFilter === "active") {
+    visibleTodos = todos.filter((task) => task.completed === false);
+  } else if (selectedFilter === "completed") {
+    visibleTodos = todos.filter((task) => task.completed === true);
+  }
 
   useEffect(() => {
     console.log(todos);
@@ -48,7 +60,7 @@ export default function MainSection() {
     <div className="main-container">
       <TodoForm onSubmit={addTodo} />
       <TodoList
-        todoItems={todos}
+        todoItems={visibleTodos}
         onButtonClick={toggleComplete}
         onDeleteButton={deleteTodo}
       />
