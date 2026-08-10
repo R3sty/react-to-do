@@ -4,7 +4,7 @@ export default function TodoFilter({ onFilterSelect }) {
   return (
     <div className="filter-container">
       <div className="filter-panel">
-        <p>3 items left</p>
+        <p>3 items left initial check</p>
         <div className="desktop-only">
           <FilterBtns onFilterSelect={onFilterSelect} />
         </div>
