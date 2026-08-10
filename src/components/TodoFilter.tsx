@@ -1,10 +1,10 @@
 import "./TodoFilter.css";
 
-export default function TodoFilter({ onFilterSelect }) {
+export default function TodoFilter({ onFilterSelect, remainingCount }) {
   return (
     <div className="filter-container">
       <div className="filter-panel">
-        <p>3 items left</p>
+        <p>{remainingCount} items left</p>
         <div className="desktop-only">
           <FilterBtns onFilterSelect={onFilterSelect} />
         </div>

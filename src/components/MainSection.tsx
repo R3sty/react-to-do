@@ -13,7 +13,7 @@ export default function MainSection() {
       id: crypto.randomUUID(),
       text: taskText,
       completed: false,
-    }; // memo: I got stuck at this part since I have created this variable outside of this function and It was looking for the data addTodo function is receiving(newTodo).
+    }; // memo: I got stuck at this part since I have created this variable outside of this function and It was looking for the data addTodo function is receiving(taskText).
     setTodos((prevTodos) => [...prevTodos, newTask]); //Take the current todo list, add this new todo at the end, and save the new list
     console.log("adding tasks");
   }
@@ -52,6 +52,10 @@ export default function MainSection() {
     visibleTodos = todos.filter((task) => task.completed === true);
   }
 
+  function remainingTodos() {
+    return todos.filter((task) => task.completed === false).length;
+  }
+
   useEffect(() => {
     console.log(todos);
   }, [todos]);
@@ -64,7 +68,10 @@ export default function MainSection() {
         onButtonClick={toggleComplete}
         onDeleteButton={deleteTodo}
       />
-      <TodoFilter onFilterSelect={filterTodo} />
+      <TodoFilter
+        onFilterSelect={filterTodo}
+        remainingCount={remainingTodos()}
+      />
       <p className="drag-text">Drag and drop to reorder list</p>
     </div>
   );
