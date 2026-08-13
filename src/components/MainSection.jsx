@@ -56,6 +56,12 @@ export default function MainSection() {
     return todos.filter((task) => task.completed === false).length;
   }
 
+  function clearCompleted() {
+    setTodos((prevTodos) => {
+      return prevTodos.filter((task) => task.completed === false);
+    });
+  }
+
   useEffect(() => {
     console.log(todos);
   }, [todos]);
@@ -71,6 +77,7 @@ export default function MainSection() {
       <TodoFilter
         onFilterSelect={filterTodo}
         remainingCount={remainingTodos()}
+        clearTasks={clearCompleted}
       />
       <p className="drag-text">Drag and drop to reorder list</p>
     </div>
