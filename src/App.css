@@ -1,5 +1,13 @@
+:root {
+  --main-background: #f2f2f2;
+}
+
 main {
   width: 100%;
   height: 100vh;
-  background-color: #f2f2f2;
+  background-color: var(--main-background);
+}
+
+.dark {
+  --main-background: #181824;
 }
