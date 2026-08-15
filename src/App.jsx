@@ -7,12 +7,12 @@ function App() {
   const [darkMode, setDarkMode] = useState(false);
 
   return (
-    <>
+    <div className={darkMode ? "dark" : ""}>
       <Header setDarkMode={setDarkMode} />
-      <main className={darkMode ? "dark" : "light"}>
+      <main>
         <MainSection />
       </main>
-    </>
+    </div>
   );
 }
 

@@ -4,7 +4,7 @@
   list-style: none;
   border: none;
   border-radius: 5px;
-  background-color: #fff;
+  background-color: var(--container-bg);
   margin: 20px 0 0 0;
   padding: 0;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
@@ -21,10 +21,11 @@
 
 .complete-btn {
   border: none;
-  background-color: #fff;
+  background-color: var(--container-bg);
   cursor: pointer;
   display: flex;
   gap: 20px;
+  color: var(--font-color2);
 }
 
 .check-circle {
@@ -33,6 +34,7 @@
   width: 20px;
   border-radius: 50%;
   border: 1px solid rgba(0, 0, 0, 0.5);
+  border-color: var(--font-color2);
 }
 
 .check-icon {
@@ -53,7 +55,7 @@
 
 .delete-btn {
   border: none;
-  background-color: #fff;
+  background-color: var(--container-bg);
   cursor: pointer;
 }
 

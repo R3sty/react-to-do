@@ -8,7 +8,7 @@ export default function TodoFilter({
   return (
     <div className="filter-container">
       <div className="filter-panel">
-        <p>{remainingCount} items left</p>
+        <p className="remainingCount">{remainingCount} items left</p>
         <div className="desktop-only">
           <FilterBtns onFilterSelect={onFilterSelect} />
         </div>
