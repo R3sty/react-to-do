@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 export default function MainSection() {
   const [todos, setTodos] = useState([]);
   const [selectedFilter, setSelectedFilter] = useState("all");
+  const [hasLoaded, setHasLoaded] = useState(false);
 
   function addTodo(taskText) {
     const newTask = {
@@ -61,6 +62,22 @@ export default function MainSection() {
       return prevTodos.filter((task) => task.completed === false);
     });
   }
+
+  useEffect(() => {
+    const savedTodos = localStorage.getItem("todos");
+    if (savedTodos !== null) {
+      setTodos(JSON.parse(savedTodos));
+    }
+    setHasLoaded(true);
+  }, []);
+
+  useEffect(() => {
+    if (hasLoaded === true) {
+      localStorage.setItem("todos", JSON.stringify(todos));
+    }
+  }, [todos, hasLoaded]);
+
+  //memo: I encountered a bug where the saved todos are not being displayed. The save Effect is saving the empty array at the initial render overwriting the saved task in localstorage. hasLoaded fixes this by telling the save Effect that the loading has not finished yet so it should not save anything until loading effect has finished.
 
   useEffect(() => {
     console.log(todos);
