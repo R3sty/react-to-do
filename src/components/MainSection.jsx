@@ -77,7 +77,7 @@ export default function MainSection() {
     }
   }, [todos, hasLoaded]);
 
-  //memo: I encountered a bug where the saved todos are not being displayed. The save Effect is saving the empty array at the initial render overwriting the saved task in localstorage. hasLoaded fixes this by telling the save Effect that the loading has not finished yet so it should not save anything until loading effect has finished.
+  //memo: I encountered a bug where the saved todos are not being displayed. The save Effect is saving the empty array at the initial render overwriting the saved task in localstorage. hasLoaded fixes this by telling the save Effect that the loading has not finished yet so it should not save anything until loading effect has finished. save effect is saving the initial state which is empty because the loading effect is not done loading and hasLoaded fixes this and acts as a flag or gate that says dont save unless the load effect has finished loading.
 
   useEffect(() => {
     console.log(todos);
