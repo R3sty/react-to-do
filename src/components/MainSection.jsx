@@ -2,7 +2,7 @@ import "./MainSection.css";
 import TodoForm from "./TodoForm";
 import TodoList from "./TodoList";
 import TodoFilter from "./TodoFilter";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 export default function MainSection() {
   const [todos, setTodos] = useState([]);
@@ -63,6 +63,7 @@ export default function MainSection() {
     });
   }
 
+  //save Tasks and Theme
   useEffect(() => {
     const savedTodos = localStorage.getItem("todos");
     if (savedTodos !== null) {
@@ -79,6 +80,13 @@ export default function MainSection() {
 
   //memo: I encountered a bug where the saved todos are not being displayed. The save Effect is saving the empty array at the initial render overwriting the saved task in localstorage. hasLoaded fixes this by telling the save Effect that the loading has not finished yet so it should not save anything until loading effect has finished. save effect is saving the initial state which is empty because the loading effect is not done loading and hasLoaded fixes this and acts as a flag or gate that says dont save unless the load effect has finished loading.
 
+  //Drag and Drop
+  const draggedTodoId = useRef(null);
+
+  function draggedId(id) {
+    draggedTodoId.current = id;
+  }
+
   useEffect(() => {
     console.log(todos);
   }, [todos]);
@@ -90,6 +98,7 @@ export default function MainSection() {
         todoItems={visibleTodos}
         onButtonClick={toggleComplete}
         onDeleteButton={deleteTodo}
+        draggedId={draggedId}
       />
       <TodoFilter
         onFilterSelect={filterTodo}
