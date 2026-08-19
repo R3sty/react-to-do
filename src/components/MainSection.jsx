@@ -87,6 +87,15 @@ export default function MainSection() {
     draggedTodoId.current = id;
   }
 
+  function handleDrop(index) {
+    const draggedTodo = todos.find((task) => task.id === draggedTodoId.current);
+    const remainingTodos = todos.filter(
+      (task) => task.id !== draggedTodoId.current,
+    );
+    remainingTodos.splice(index, 0, draggedTodo);
+    setTodos(remainingTodos);
+  }
+
   useEffect(() => {
     console.log(todos);
   }, [todos]);
@@ -99,6 +108,7 @@ export default function MainSection() {
         onButtonClick={toggleComplete}
         onDeleteButton={deleteTodo}
         draggedId={draggedId}
+        handleDrop={handleDrop}
       />
       <TodoFilter
         onFilterSelect={filterTodo}

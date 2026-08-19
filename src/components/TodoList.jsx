@@ -7,15 +7,18 @@ export default function TodoList({
   onButtonClick,
   onDeleteButton,
   draggedId,
+  handleDrop,
 }) {
   return (
     <ul className="todo-list">
-      {todoItems.map((task) => (
+      {todoItems.map((task, index) => (
         <li
           className="todo-item"
           key={task.id}
           draggable={true}
           onDragStart={() => draggedId(task.id)}
+          onDrop={() => handleDrop(index)}
+          onDragOver={(e) => e.preventDefault()}
         >
           <button
             className="complete-btn"
