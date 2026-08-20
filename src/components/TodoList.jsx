@@ -2,11 +2,24 @@ import "./TodoList.css";
 import cross from "../assets/images/icon-cross.svg";
 import check from "../assets/images/icon-check.svg";
 
-export default function TodoList({ todoItems, onButtonClick, onDeleteButton }) {
+export default function TodoList({
+  todoItems,
+  onButtonClick,
+  onDeleteButton,
+  draggedId,
+  handleDrop,
+}) {
   return (
     <ul className="todo-list">
-      {todoItems.map((task) => (
-        <li className="todo-item" key={task.id}>
+      {todoItems.map((task, index) => (
+        <li
+          className="todo-item"
+          key={task.id}
+          draggable={true}
+          onDragStart={() => draggedId(task.id)}
+          onDrop={() => handleDrop(index)}
+          onDragOver={(e) => e.preventDefault()}
+        >
           <button
             className="complete-btn"
             onClick={() => onButtonClick(task.id)}

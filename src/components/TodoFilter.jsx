@@ -1,14 +1,20 @@
 import "./TodoFilter.css";
 
-export default function TodoFilter({ onFilterSelect, remainingCount }) {
+export default function TodoFilter({
+  onFilterSelect,
+  remainingCount,
+  clearTasks,
+}) {
   return (
     <div className="filter-container">
       <div className="filter-panel">
-        <p>{remainingCount} items left</p>
+        <p className="remainingCount">{remainingCount} items left</p>
         <div className="desktop-only">
           <FilterBtns onFilterSelect={onFilterSelect} />
         </div>
-        <button className="clear-btn">Clear Completed</button>
+        <button className="clear-btn" onClick={clearTasks}>
+          Clear Completed
+        </button>
       </div>
       <div className="mobile-only">
         <FilterBtns onFilterSelect={onFilterSelect} />

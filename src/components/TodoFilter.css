@@ -8,7 +8,7 @@
 }
 
 .filter-panel {
-  background-color: #fff;
+  background-color: var(--container-bg);
   width: 100%;
   border-radius: 5px;
   display: flex;
@@ -23,7 +23,7 @@
 }
 
 .mobile-only {
-  background-color: #fff;
+  background-color: var(--container-bg);
   width: 100%;
   max-width: 340px;
   padding: 15px;
@@ -42,7 +42,7 @@
 
 .clear-btn,
 .filter-btn {
-  background-color: #fff;
+  background-color: var(--container-bg);
   border: none;
   cursor: pointer;
   color: darkgray;
@@ -50,7 +50,11 @@
 
 .clear-btn:hover,
 .filter-btn:hover {
-  color: black;
+  color: var(--hover-color);
+}
+
+.remainingCount {
+  color: var(--font-color2);
 }
 
 @media (min-width: 768px) {

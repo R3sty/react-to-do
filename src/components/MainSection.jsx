@@ -2,11 +2,12 @@ import "./MainSection.css";
 import TodoForm from "./TodoForm";
 import TodoList from "./TodoList";
 import TodoFilter from "./TodoFilter";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 export default function MainSection() {
   const [todos, setTodos] = useState([]);
   const [selectedFilter, setSelectedFilter] = useState("all");
+  const [hasLoaded, setHasLoaded] = useState(false);
 
   function addTodo(taskText) {
     const newTask = {
@@ -56,6 +57,45 @@ export default function MainSection() {
     return todos.filter((task) => task.completed === false).length;
   }
 
+  function clearCompleted() {
+    setTodos((prevTodos) => {
+      return prevTodos.filter((task) => task.completed === false);
+    });
+  }
+
+  //save Tasks and Theme
+  useEffect(() => {
+    const savedTodos = localStorage.getItem("todos");
+    if (savedTodos !== null) {
+      setTodos(JSON.parse(savedTodos));
+    }
+    setHasLoaded(true);
+  }, []);
+
+  useEffect(() => {
+    if (hasLoaded === true) {
+      localStorage.setItem("todos", JSON.stringify(todos));
+    }
+  }, [todos, hasLoaded]);
+
+  //memo: I encountered a bug where the saved todos are not being displayed. The save Effect is saving the empty array at the initial render overwriting the saved task in localstorage. hasLoaded fixes this by telling the save Effect that the loading has not finished yet so it should not save anything until loading effect has finished. save effect is saving the initial state which is empty because the loading effect is not done loading and hasLoaded fixes this and acts as a flag or gate that says dont save unless the load effect has finished loading.
+
+  //Drag and Drop
+  const draggedTodoId = useRef(null);
+
+  function draggedId(id) {
+    draggedTodoId.current = id;
+  }
+
+  function handleDrop(index) {
+    const draggedTodo = todos.find((task) => task.id === draggedTodoId.current);
+    const remainingTodos = todos.filter(
+      (task) => task.id !== draggedTodoId.current,
+    );
+    remainingTodos.splice(index, 0, draggedTodo);
+    setTodos(remainingTodos);
+  }
+
   useEffect(() => {
     console.log(todos);
   }, [todos]);
@@ -67,10 +107,13 @@ export default function MainSection() {
         todoItems={visibleTodos}
         onButtonClick={toggleComplete}
         onDeleteButton={deleteTodo}
+        draggedId={draggedId}
+        handleDrop={handleDrop}
       />
       <TodoFilter
         onFilterSelect={filterTodo}
         remainingCount={remainingTodos()}
+        clearTasks={clearCompleted}
       />
       <p className="drag-text">Drag and drop to reorder list</p>
     </div>

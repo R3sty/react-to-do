@@ -1,5 +1,33 @@
+:root {
+  --header-background: url("./assets/images/bg-mobile-light.jpg");
+  --main-background: #f2f2f2;
+  --font-color1: black;
+  --font-color2: black;
+  --container-bg: #fff;
+  --hover-color: black;
+}
+
+.dark {
+  --header-background: url("./assets/images/bg-mobile-dark.jpg");
+  --main-background: #181824;
+  --font-color1: #5b5e7e;
+  --font-color2: #c8cbe7;
+  --container-bg: #25273c;
+  --hover-color: white;
+}
+
 main {
   width: 100%;
   height: 100vh;
-  background-color: #f2f2f2;
+  background-color: var(--main-background);
+}
+
+@media (min-width: 768px) {
+  :root {
+    --header-background: url("./assets/images/bg-desktop-light.jpg");
+  }
+
+  .dark {
+    --header-background: url("./assets/images/bg-desktop-dark.jpg");
+  }
 }
